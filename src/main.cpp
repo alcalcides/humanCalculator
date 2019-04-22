@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -16,17 +17,20 @@ using namespace std;
 
 
 int main(void){
-	unsigned int life = 5;
+	unsigned int life;
 	bool gameOver = false;
-	unsigned int bonus = 0;
-	unsigned int nivel = 1;
+	unsigned int bonus;
+	unsigned int nivel;
 	unsigned int comando;
 	bool zerou = false;
 	string user;
-	string cargo = "Estudante";
+	string cargo;
 
 	apresentacao();
 	user = qualUsuario();
+
+	buscarUser(user, cargo, nivel, life, bonus);
+
 	if(user == "dev") {
 		nivel = 3;
 		cargo = "Desenvolvedor";
@@ -65,7 +69,7 @@ int main(void){
 
 	relatorio(user, cargo, nivel, life, bonus);
 
-	// registrarUsuario(usuario, cargo, nivel, life, bonus);
+	registrarUsuario(user, cargo, nivel, life, bonus);
 
 	return 0;
 }

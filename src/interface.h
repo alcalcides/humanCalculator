@@ -82,9 +82,17 @@ void maisLife(unsigned int &life, unsigned int &qtdConsecutivaAcertos){
 void boasVindasNivel(unsigned int nivel){
 	int w;
 	cout <<	"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
-	cout <<	"^^^^ Nivel " << nivel << " => ";	
-	cout << " Esteja Preparado!  ^^^^" << endl << endl;
+	cout <<	"^^^^ Nivel " << nivel << flush;
+	for(int w = 0; w < 4; w++){
+		Sleep(700);
+		cout << "." << flush;
+	}
+	Sleep(1000);
+	cout << " Esteja Preparado!" << flush;
 	Sleep(2000);
+	cout << "  ^^^^" << endl;
+	cout <<	"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
+	Sleep(1000);
 }
 
 unsigned int oferecerUpgrade(unsigned int &nivel){
