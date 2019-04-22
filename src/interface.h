@@ -1,9 +1,6 @@
 void apresentacao(void);
 string qualUsuario(void);
 unsigned int menu (unsigned int nivel);
-void verSituacao(int life, int bonus);
-bool passou (int life, int bonus);
-bool perdeu (int life, int bonus);
 void parabensNivel(unsigned int nivel);
 void parabensAcertou();
 void mensagemErrouItem();
@@ -12,8 +9,11 @@ void boasVindasNivel(unsigned int nivel);
 unsigned int oferecerUpgrade(unsigned int &nivel);
 bool zerouMaquina();
 void relatorio(string user, string cargo, int nivel, int life, int bonus);
+void perdeu();
 
 void apresentacao(void){
+	system("cls");
+	
 	cout << endl << endl << endl << endl << endl << endl << endl;
 	cout <<	"****************************************" << endl;
 	cout <<	"********** Calculadora Humana **********" << endl;
@@ -23,15 +23,14 @@ void apresentacao(void){
 
 string qualUsuario(void){
 	string user;
-	cout << "Username: " ;
-	cin >> user;
+	do{
+		cout << "Username: " ;
+		cin >> user;
+		if (user.length() >= 10){
+			cout << "Limite de 10 caracteres excedido" << endl;
+		}
+	} while (user.length() >= 10);
 	return user;
-}
-
-
-void verSituacao(int life, int bonus){
-	cout << "Life: " << life << endl;
-	cout << "Acertos Consecutivos: " << bonus << endl;
 }
 
 unsigned int menu (unsigned int nivel){
@@ -39,29 +38,17 @@ unsigned int menu (unsigned int nivel){
 	int i;
 	cout << "Menu: " << endl;
 	cout << 0 << " para sair" << endl;
-	for (i = 1; i <= nivel; ++i)	{
+	for (i = 1; i <= nivel && i <= NUM_NIVEIS; ++i)	{
 		cout << i << " para nivel " << i << endl;	
 	}
 	while(cin >> op, op > nivel);
 	return op;
 }
 
-bool perdeu (int life, int bonus){
-	cout << "Voce PERDEU" << endl;
-	cout << ":(" << endl;
-	verSituacao(life, bonus);
-	return false;
-}
-
-bool passou (int life, int bonus){
-	cout << "Parabéns! Voce passou de nivel!" << endl;
-	verSituacao(life, bonus);
-	return true;
-}
-
 void parabensNivel(unsigned int nivel) { 
 	cout <<	endl;
-	cout <<	"^^^ Parabéns! Você passou no nível " << nivel << " ^^^" << endl;
+	cout <<	"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
+	cout <<	"^^^ Parabens! Voce passou no nivel " << nivel << " ^^^" << endl;
 	cout <<	"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
 }
 
@@ -128,4 +115,17 @@ void relatorio(string user, string cargo, int nivel, int life, int bonus){
 	cout << "Nivel: " << nivel << endl;
 	cout << "Life: " << life << endl;
 	cout << "Bonus: " << bonus << endl;
+}
+
+void perdeu(){
+	int i;
+	cout << "Voce perdeu..." << flush;
+	Sleep(1000);
+	cout << "   :)" << flush; 
+	Sleep(800);
+	cout << "\b|" << flush;
+	Sleep(120);
+	cout << "\b(" << flush;
+	Sleep(2000);
+	cout << endl;
 }

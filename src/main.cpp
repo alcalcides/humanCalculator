@@ -7,36 +7,49 @@
 #include <windows.h>
 using namespace std;
 
+#include "defs.h"
 #include "interface.h"
 #include "nivel1.h"
 #include "nivel2.h"
 #include "nivel3.h"
 #include "regs.h"
 
-#define numNiveis 3
-
 
 int main(void){
-	unsigned int life;
 	bool gameOver = false;
-	unsigned int bonus;
-	unsigned int nivel;
-	unsigned int comando;
 	bool zerou = false;
+	long int idUser;
+	unsigned int comando;
+	
 	string user;
 	string cargo;
+	unsigned int nivel;
+	unsigned int life;
+	unsigned int bonus;
 
 	apresentacao();
 	user = qualUsuario();
 
-	buscarUser(user, cargo, nivel, life, bonus);
-
+	idUser = buscarUser(user);
+	if(idUser <= -1){
+		cargo = "Estudante";
+		nivel = 1;
+		life = 5;
+		bonus = 0;
+	}
+	else {
+		carregarUser(idUser, cargo, nivel, life, bonus);
+	}
 	if(user == "dev") {
 		nivel = 3;
 		cargo = "Desenvolvedor";
+		life = 1;
 	}
+	if(life == 0)
+		life++;
 
-	verSituacao(life, bonus);
+	relatorio(user, cargo, nivel, life, bonus);
+	
 	do{
 		comando = menu(nivel);
 		switch (comando){
@@ -56,7 +69,7 @@ int main(void){
 				break;
 		}
 		
-		if(nivel == numNiveis){
+		if(nivel == NUM_NIVEIS){
 			zerou = true;
 			zerouMaquina();
 		}
@@ -66,10 +79,23 @@ int main(void){
 		}
 
 	} while(!gameOver && !zerou && comando != 0);
+	
+	if(gameOver){
+		perdeu();
+	}
 
 	relatorio(user, cargo, nivel, life, bonus);
+	
+	if(idUser <= -1){
+		registrarUsuario(user, cargo, nivel, life, bonus);
+	}
+	else{
+		atualizarUser(idUser, user, cargo, nivel, life, bonus);
+	}
 
-	registrarUsuario(user, cargo, nivel, life, bonus);
+
+	system("pause");
+	system("cls");
 
 	return 0;
 }
