@@ -28,6 +28,7 @@ int main(void){
 	unsigned int nivel;
 	unsigned int life;
 	unsigned int bonus;
+	int ultimoNivelJogado;
 
 	apresentacao();
 	user = qualUsuario();
@@ -47,40 +48,46 @@ int main(void){
 		cargo = "Desenvolvedor";
 		life = 1;
 	}
-	if(life == 0)
-		life++;
 
 	relatorio(user, cargo, nivel, life, bonus);
 	
 	do{
 		comando = menu(nivel);
 		passouDeNivel = false;
+		ultimoNivelJogado = 0;
 		switch (comando){
 			case 0:
 				break;
 			case 1: 
 				passouDeNivel = jogarNivel1(life, bonus, gameOver);
+				ultimoNivelJogado = 1;
 				break;
 			case 2: 
 				passouDeNivel = jogarNivel2(life, bonus, gameOver);
+				ultimoNivelJogado = 2;
 				break;
 			case 3: 
 				passouDeNivel = jogarNivel3(life, bonus, gameOver);
+				ultimoNivelJogado = 3;
 				break;
 			case (NUM_NIVEIS + 1):
 				mostrarRecordistas();
 				break;
 		}
 		
-		if(gameOver){
+		if(gameOver && ultimoNivelJogado){
 			perdeu();
+			gameOver = false;
 			relatorio(user, cargo, nivel, life, bonus);
+			cout << "Voce ganhou um life para continuar" << endl;
+			life = 1;
+
 		}
-		else if(nivel == NUM_NIVEIS && passouDeNivel){
+		else if(nivel == NUM_NIVEIS && passouDeNivel && ultimoNivelJogado == NUM_NIVEIS){
 			zerou = true;
 			zerouMaquina();
 		}
-		else if(passouDeNivel){
+		else if(passouDeNivel && ultimoNivelJogado == nivel){
 			parabensNivel(nivel);
 			comando = oferecerUpgrade(nivel);
 		}
