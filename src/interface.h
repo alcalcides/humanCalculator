@@ -39,9 +39,12 @@ unsigned int menu (unsigned int nivel){
 	cout << "Menu: " << endl;
 	cout << 0 << " para sair" << endl;
 	for (i = 1; i <= nivel && i <= NUM_NIVEIS; ++i)	{
-		cout << i << " para nivel " << i << endl;	
+		cout << i << " para nivel " << i << endl;
 	}
-	while(cin >> op, op > nivel);
+	cout << NUM_NIVEIS + 1 << " para ver Recordistas " << endl;
+	do{
+		cin >> op;
+	} while(op > nivel && op != NUM_NIVEIS+1);
 	return op;
 }
 

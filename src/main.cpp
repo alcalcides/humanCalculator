@@ -13,6 +13,7 @@ using namespace std;
 #include "nivel2.h"
 #include "nivel3.h"
 #include "regs.h"
+#include "records.h"
 
 
 int main(void){
@@ -20,6 +21,7 @@ int main(void){
 	bool zerou = false;
 	long int idUser;
 	unsigned int comando;
+	bool passouDeNivel;
 	
 	string user;
 	string cargo;
@@ -52,37 +54,39 @@ int main(void){
 	
 	do{
 		comando = menu(nivel);
+		passouDeNivel = false;
 		switch (comando){
 			case 0:
 				break;
 			case 1: 
-				jogarNivel1(life, bonus, gameOver);
+				passouDeNivel = jogarNivel1(life, bonus, gameOver);
 				break;
 			case 2: 
-				jogarNivel2(life, bonus, gameOver);
+				passouDeNivel = jogarNivel2(life, bonus, gameOver);
 				break;
 			case 3: 
-				jogarNivel3(life, bonus, gameOver);
+				passouDeNivel = jogarNivel3(life, bonus, gameOver);
 				break;
-			default:
-				zerou = zerouMaquina();
+			case (NUM_NIVEIS + 1):
+				mostrarRecordistas();
 				break;
 		}
 		
-		if(nivel == NUM_NIVEIS){
+		if(gameOver){
+			perdeu();
+			relatorio(user, cargo, nivel, life, bonus);
+		}
+		else if(nivel == NUM_NIVEIS && passouDeNivel){
 			zerou = true;
 			zerouMaquina();
 		}
-		else if(!gameOver && comando != 0){
+		else if(passouDeNivel){
 			parabensNivel(nivel);
 			comando = oferecerUpgrade(nivel);
 		}
 
-	} while(!gameOver && !zerou && comando != 0);
+	} while(comando != 0);
 	
-	if(gameOver){
-		perdeu();
-	}
 
 	relatorio(user, cargo, nivel, life, bonus);
 	

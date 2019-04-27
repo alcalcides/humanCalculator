@@ -1,11 +1,12 @@
 bool acertouN1(int i, int j, int res);
-void jogarNivel1(unsigned int &life, unsigned int &bonus, bool &gameOver);
+bool jogarNivel1(unsigned int &life, unsigned int &bonus, bool &gameOver);
 
-void jogarNivel1(unsigned int &life, unsigned int &bonus, bool &gameOver){
+bool jogarNivel1(unsigned int &life, unsigned int &bonus, bool &gameOver){
 	int i, j, k;
 	int op1, op2;
 	bool opUsado[11];
 	int res;
+	bool passouDeNivel = false;
 
 	boasVindasNivel(1);
 	cout << "Digite APENAS o algarismo das UNIDADES" << endl;
@@ -42,7 +43,9 @@ void jogarNivel1(unsigned int &life, unsigned int &bonus, bool &gameOver){
 				}
 			}
 		}
+		if(!gameOver) passouDeNivel = true;
 	}
+	return passouDeNivel;
 }
 
 bool acertouN1(int i, int j, int res){

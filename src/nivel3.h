@@ -1,8 +1,9 @@
 bool acertouN3(int i, int j, int res);
-void jogarNivel3(unsigned int &life, unsigned int &bonus, bool &gameOver);
+bool jogarNivel3(unsigned int &life, unsigned int &bonus, bool &gameOver);
 
 
-void jogarNivel3(unsigned int &life, unsigned int &bonus, bool &gameOver){
+bool jogarNivel3(unsigned int &life, unsigned int &bonus, bool &gameOver){
+	bool passouDeNivel = false;
 	int op1, op2;
 	int res;
 
@@ -44,6 +45,9 @@ void jogarNivel3(unsigned int &life, unsigned int &bonus, bool &gameOver){
 		op1 += op2;
 
 	} while(op1 < 150 && !gameOver); //obs 1
+	if(!gameOver)
+		passouDeNivel = true;
+	return passouDeNivel;
 }
 
 
