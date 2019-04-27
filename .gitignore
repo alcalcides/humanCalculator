@@ -1,4 +1,5 @@
-src/regUsers.txt
+*/regUsers.txt
+*n?.txt
 # Prerequisites
 *.d
 

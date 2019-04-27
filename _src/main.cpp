@@ -9,11 +9,11 @@ using namespace std;
 
 #include "defs.h"
 #include "interface.h"
+#include "punctuation.h"
+#include "regs.h"
 #include "nivel1.h"
 #include "nivel2.h"
 #include "nivel3.h"
-#include "regs.h"
-#include "records.h"
 
 
 int main(void){
@@ -59,15 +59,15 @@ int main(void){
 			case 0:
 				break;
 			case 1: 
-				passouDeNivel = jogarNivel1(life, bonus, gameOver);
+				passouDeNivel = jogarNivel1(life, bonus, gameOver, user, cargo);
 				ultimoNivelJogado = 1;
 				break;
 			case 2: 
-				passouDeNivel = jogarNivel2(life, bonus, gameOver);
+				passouDeNivel = jogarNivel2(life, bonus, gameOver, user, cargo);
 				ultimoNivelJogado = 2;
 				break;
 			case 3: 
-				passouDeNivel = jogarNivel3(life, bonus, gameOver);
+				passouDeNivel = jogarNivel3(life, bonus, gameOver, user, cargo);
 				ultimoNivelJogado = 3;
 				break;
 			case (NUM_NIVEIS + 1):
@@ -90,6 +90,8 @@ int main(void){
 		else if(passouDeNivel && ultimoNivelJogado == nivel){
 			parabensNivel(nivel);
 			comando = oferecerUpgrade(nivel);
+			if(cargo != "Recordista")
+				cargo = atualizarCargoPeloNivel(nivel);
 		}
 
 	} while(comando != 0);

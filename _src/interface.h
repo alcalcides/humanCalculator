@@ -10,6 +10,8 @@ unsigned int oferecerUpgrade(unsigned int &nivel);
 bool zerouMaquina();
 void relatorio(string user, string cargo, int nivel, int life, int bonus);
 void perdeu();
+void parabenizarRecorde(unsigned int nivel, double score, string user);
+void tempoDecorrido(double tempo);
 
 void apresentacao(void){
 	system("cls");
@@ -131,4 +133,15 @@ void perdeu(){
 	cout << "\b(" << flush;
 	Sleep(2000);
 	cout << endl;
+}
+
+void parabenizarRecorde(unsigned int nivel, double score, string user){
+	cout << endl << endl << "Nossa ! " << flush;
+	Sleep(300);
+	cout << "Voce Bateu Recorde! ;)" << endl;
+	cout << "Novo Recorde Nivel " << nivel << " pertence a " << user << " com " << score << " pontos" << endl;
+}
+
+void tempoDecorrido(double tempo){
+	cout << "Segundos decorridos: " << tempo << " s" << endl;
 }
