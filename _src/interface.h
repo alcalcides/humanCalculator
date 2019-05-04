@@ -58,16 +58,18 @@ void parabensNivel(unsigned int nivel) {
 }
 
 void parabensAcertou(void){
-	cout << "Resposta Correta :)" << endl;
+	cout << "Resposta Correta :)\a" << endl;
 }
 
 void mensagemErrouItem(void){
 	cout << "ERRRRRROU :(" << endl;
+	Beep(200, 800);
 }
 
 void maisLife(unsigned int &life, unsigned int &qtdConsecutivaAcertos){
 	life++;
 	cout << "Mais life!!!" << life << endl;
+	Beep(1000, 400);
 	qtdConsecutivaAcertos = 0;
 }
 
@@ -75,7 +77,7 @@ void boasVindasNivel(unsigned int nivel){
 	int w;
 	cout <<	"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
 	cout <<	"^^^^ Nivel " << nivel << flush;
-	for(int w = 0; w < 4; w++){
+	for(w = 0; w < 4; w++){
 		Sleep(700);
 		cout << "." << flush;
 	}
@@ -90,6 +92,7 @@ void boasVindasNivel(unsigned int nivel){
 unsigned int oferecerUpgrade(unsigned int &nivel){
 	char resp;
 	int cmd;
+	Beep(1100, 1000);
 	cout << "Nivel desbloqueado: Nivel " << nivel + 1 << endl;
 	cout << "Quer fazer upgrade gratuito agora? (S/N): ";
 	while(cin >> resp, resp != 'S' && resp != 'N');
@@ -124,6 +127,7 @@ void relatorio(string user, string cargo, int nivel, int life, int bonus){
 
 void perdeu(){
 	int i;
+	Beep(200, 1000);
 	cout << "Voce perdeu..." << flush;
 	Sleep(1000);
 	cout << "   :)" << flush; 
@@ -138,6 +142,7 @@ void perdeu(){
 void parabenizarRecorde(unsigned int nivel, double score, string user){
 	cout << endl << endl << "Nossa ! " << flush;
 	Sleep(300);
+	Beep(1200, 1000);
 	cout << "Voce Bateu Recorde! ;)" << endl;
 	cout << "Novo Recorde Nivel " << nivel << " pertence a " << user << " com " << score << " pontos" << endl;
 }
