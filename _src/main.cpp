@@ -11,10 +11,10 @@ using namespace std;
 #include "interface.h"
 #include "punctuation.h"
 #include "regs.h"
-#include "nivel1.h"
-#include "nivel2.h"
-#include "nivel3.h"
-#include "nivel4.h"
+#include "_levels/nivel1.h"
+#include "_levels/nivel2.h"
+#include "_levels/nivel3.h"
+#include "_levels/nivel4.h"
 
 
 int main(void){	
