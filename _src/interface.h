@@ -38,7 +38,7 @@ string qualUsuario(void){
 unsigned int menu (unsigned int nivel){
 	unsigned int op;
 	int i;
-	cout << "Menu: " << endl;
+	cout << endl << "Menu: " << endl;
 	cout << 0 << " para sair" << endl;
 	for (i = 1; i <= nivel && i <= NUM_NIVEIS; ++i)	{
 		cout << i << " para nivel " << i << endl;

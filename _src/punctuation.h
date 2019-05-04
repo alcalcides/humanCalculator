@@ -12,7 +12,7 @@ void mostrarRecordistas();
 void mostrarRecordistas(){
 	char user[TAM_USER+1];
 	double score;
-	cout << "Nivel\tUser\tScore" << endl; 
+	cout << endl << "Nivel\tUser\tScore" << endl; 
 	
 	FILE *regs;
 	regs = fopen("_localRecords/n1.txt", "r");
@@ -38,6 +38,15 @@ void mostrarRecordistas(){
 		fscanf(regs, "%lf\t%s\n", &score, user);
 		fclose(regs);
 		printf("%d\t%s\t%lf\n", 3, user, score);
+	}
+	else{
+		cout << endl;
+	}
+	regs = fopen("_localRecords/n4.txt", "r");
+	if(regs){
+		fscanf(regs, "%lf\t%s\n", &score, user);
+		fclose(regs);
+		printf("%d\t%s\t%lf\n", 4, user, score);
 	}
 	else{
 		cout << endl;
@@ -71,6 +80,9 @@ bool verificarRecorde(unsigned int nivel, double score){
 		case 3:
 			bookOfRecords = fopen("_localRecords/n3.txt", "r");
 			break;
+		case 4:
+			bookOfRecords = fopen("_localRecords/n4.txt", "r");
+			break;
 		default:
 			bookOfRecords = NULL;
 	}
@@ -96,6 +108,9 @@ FILE* registrarRecorde(unsigned int nivel, double score, string user){
 			break;
 		case 3:
 			bookOfRecords = fopen("_localRecords/n3.txt", "w");
+			break;
+		case 4:
+			bookOfRecords = fopen("_localRecords/n4.txt", "w");
 			break;
 		default:
 			bookOfRecords = NULL;
@@ -126,6 +141,9 @@ string atualizarCargoPeloNivel(unsigned int nivel){
 			break;
 		case 3:
 			novoCargo = "SomadorN3";
+			break;
+		case 4:
+			novoCargo = "SubtratorN1";
 			break;
 		default:
 			cout << "ERRO: Nao ha cargo para este nivel" << endl;
