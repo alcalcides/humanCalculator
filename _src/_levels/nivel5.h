@@ -4,32 +4,23 @@ bool jogarNivel5(unsigned int &life, unsigned int &bonus, bool &gameOver, string
 
 bool jogarNivel5(unsigned int &life, unsigned int &bonus, bool &gameOver, string user, string &cargo){
 	bool passouDeNivel;
+	int i;
 	int op1, op2;
 	int res;
 	clock_t ini, fim;
-	unsigned int qtdAcertos, qtdPerguntas;
+	unsigned int qtdAcertos;
 	double score = 0;
 
 	boasVindasNivel(5);
-	cout << "Digite o resultado da subtracao" << endl;
+	cout << "Digite o resultado da subtração" << endl;
 
 	srand (time(NULL));
-	/*obs 1:
-		O nível 5 tem no mínimo 15 operações
-		quando sempre é sorteado o valor 10. 
-		No pior das hipóteses, sempre é sorteado 
-		o valor 0 e então, haverá infinitas operações.
-		No pior caso razoável, sempre é sorteado 
-		o valor 1 e, então, haverá 150 operações.
-	*/
 	fim = ini = clock();
-	qtdAcertos = qtdPerguntas = 0;
-	op1 = 150;
-	do{
+	qtdAcertos = 0;
+	for(i = 0; i < 30 && !gameOver; i++ ){
+		op1 = rand() % 11;
 		op2 = rand() % 11;
 		cout << op1 << " - " << op2 << " = ";
-		qtdPerguntas++;
-		cin.ignore();
 		cin >> res;
 		if(acertouN5(op1, op2, res)){
 			parabensAcertou();
@@ -50,15 +41,13 @@ bool jogarNivel5(unsigned int &life, unsigned int &bonus, bool &gameOver, string
 				cout << "Seu life eh: " << life << endl;
 			}
 		}
-		op1 -= op2;
-		if(op1%10 == 0 && !gameOver){
+		if(i%10 == 0){
 			fim = clock();
 			tempoDecorrido(duracaoSeg_d(ini, fim));
 		}
-
-	} while(op1 > 0 && !gameOver); //obs 1
+	}
 	fim = clock();
-	score = pontuacao(ini, fim, qtdAcertos, qtdPerguntas, gameOver);
+	score = pontuacao(ini, fim, qtdAcertos, QTD_MAX_QUESTOES_N2, gameOver);
 	processarRecorde(5, score, user, cargo);
 	passouDeNivel = gameOver ? false : true;
 	return passouDeNivel;

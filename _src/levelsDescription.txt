@@ -1,0 +1,42 @@
+1
+algarismo das unidades de somas 
+tabuada de mais
+
+2
+30 adições aleatórias
+
+3
+soma acumulativa até atingir 150
+
+4
+tabuada de menos
+
+5
+30 subtrações aleatórias
+
+6
+subtrações sucessivas de 150 a 0
+
+7
+tabuada de multiplicação
+
+8
+30 multiplicações aleatórias
+
+9
+tabuada divisão
+
+10
+30 divisões inteiras aleatórias
+
+11
+30 restos de divisão
+
+12
+potência
+
+13
+raiz quadrada
+
+14s
+números inteiros
