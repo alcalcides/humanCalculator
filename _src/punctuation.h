@@ -78,6 +78,15 @@ void mostrarRecordistas(){
 	else{
 		cout << endl;
 	}
+	regs = fopen("_localRecords/n8.txt", "r");
+	if(regs){
+		fscanf(regs, "%lf\t%s\n", &score, user);
+		fclose(regs);
+		printf("%d\t%s\t%lf\n", 8, user, score);
+	}
+	else{
+		cout << endl;
+	}
 }
 double duracaoSeg_d(clock_t ini, clock_t fim){
 	double duracao;	
@@ -119,6 +128,9 @@ bool verificarRecorde(unsigned int nivel, double score){
 		case 7:
 			bookOfRecords = fopen("_localRecords/n7.txt", "r");
 			break;
+		case 8:
+			bookOfRecords = fopen("_localRecords/n8.txt", "r");
+			break;
 		default:
 			bookOfRecords = NULL;
 	}
@@ -157,6 +169,9 @@ FILE* registrarRecorde(unsigned int nivel, double score, string user){
 			break;
 		case 7:
 			bookOfRecords = fopen("_localRecords/n7.txt", "w");
+			break;
+		case 8:
+			bookOfRecords = fopen("_localRecords/n8.txt", "w");
 			break;
 		default:
 			bookOfRecords = NULL;
@@ -199,6 +214,9 @@ string atualizarCargoPeloNivel(unsigned int nivel){
 			break;
 		case 7:
 			novoCargo = "MultiplicadorN1";
+			break;
+		case 8:
+			novoCargo = "MultiplicadorN2";
 			break;
 		default:
 			cout << "ERRO: Nao ha cargo para este nivel" << endl;
