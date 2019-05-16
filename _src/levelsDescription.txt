@@ -6,6 +6,7 @@ tabuada de mais (algarismo das unidades)
 
 3
 soma acumulativa até atingir 150
+se a soma for superior a 150, pode-se digitar 0 como resposta correta
 
 4
 tabuada de menos
@@ -15,6 +16,7 @@ tabuada de menos
 
 6
 subtrações sucessivas de 150 a 0
+se a subtração for menor que 0, pode-se digitar 0 como resposta correta
 
 7
 tabuada de multiplicação (algarismo das unidades)

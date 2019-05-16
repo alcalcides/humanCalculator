@@ -66,7 +66,6 @@ bool jogarNivel6(unsigned int &life, unsigned int &bonus, bool &gameOver, string
 
 bool acertouN6(int i, int j, int res){
 	bool acert;
-	acert = (i-j == res)? true : false;
-	if((i - j) < 0 && res == 0) acert = true; //o jogador não precisa saber números negativos
+	acert = (i-j == res || (i-j < 0 && res == 0) )? true : false;
 	return acert;
 }

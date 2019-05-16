@@ -66,6 +66,6 @@ bool jogarNivel3(unsigned int &life, unsigned int &bonus, bool &gameOver, string
 
 bool acertouN3(int i, int j, int res){
 	bool acert;
-	acert = (i+j == res)? true : false;
+	acert = (i+j == res || (i+j > 150 && res==0) )? true : false;
 	return acert;
 }
