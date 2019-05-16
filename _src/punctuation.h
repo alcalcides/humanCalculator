@@ -125,6 +125,7 @@ bool verificarRecorde(unsigned int nivel, double score){
 	if(bookOfRecords){
 		fscanf(bookOfRecords, "%lf\t%s\n", &lastRecord, user);
 		isRecordista = lastRecord < score ? true : false;
+		reportarRecordeAnterior(user, lastRecord);
 		fclose(bookOfRecords);
 	}
 	else{

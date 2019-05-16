@@ -11,6 +11,7 @@ bool zerouMaquina();
 void relatorio(string user, string cargo, int nivel, int life, int bonus);
 void perdeu();
 void parabenizarRecorde(unsigned int nivel, double score, string user);
+void reportarRecordeAnterior(char* user, double lastRecord);
 void tempoDecorrido(double tempo);
 
 void apresentacao(void){
@@ -145,6 +146,10 @@ void parabenizarRecorde(unsigned int nivel, double score, string user){
 	Beep(1200, 1000);
 	cout << "Voce Bateu Recorde! ;)" << endl;
 	cout << "Novo Recorde Nivel " << nivel << " pertence a " << user << " com " << score << " pontos" << endl;
+}
+
+void reportarRecordeAnterior(char* user, double lastRecord){
+	cout << "Recorde anterior pertence a " << user << " com " << lastRecord << " Nerds" << endl;
 }
 
 void tempoDecorrido(double tempo){
