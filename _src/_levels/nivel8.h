@@ -20,7 +20,7 @@ bool jogarNivel8(unsigned int &life, unsigned int &bonus, bool &gameOver, string
 	for(i = 0; i < 30 && !gameOver; i++ ){
 		op1 = rand() % 11;
 		op2 = rand() % 11;
-		cout << op1 << " * " << op2 << " = ";
+		cout << op1 << " x " << op2 << " = ";
 		cin >> res;
 		if(acertouN8(op1, op2, res)){
 			parabensAcertou();
