@@ -17,6 +17,7 @@ using namespace std;
 #include "_levels/nivel4.h"
 #include "_levels/nivel5.h"
 #include "_levels/nivel6.h"
+#include "_levels/nivel7.h"
 
 
 int main(void){	
@@ -84,6 +85,10 @@ int main(void){
 			case 6: 
 				passouDeNivel = jogarNivel6(life, bonus, gameOver, user, cargo);
 				ultimoNivelJogado = 6;
+				break;
+			case 7: 
+				passouDeNivel = jogarNivel7(life, bonus, gameOver, user, cargo);
+				ultimoNivelJogado = 7;
 				break;
 			case (NUM_NIVEIS + 1):
 				mostrarRecordistas();

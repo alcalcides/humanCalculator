@@ -1,6 +1,5 @@
 1
-algarismo das unidades de somas 
-tabuada de mais
+tabuada de mais (algarismo das unidades)
 
 2
 30 adições aleatórias
@@ -18,25 +17,27 @@ tabuada de menos
 subtrações sucessivas de 150 a 0
 
 7
-tabuada de multiplicação
+tabuada de multiplicação (algarismo das unidades)
 
 8
 30 multiplicações aleatórias
 
 9
-tabuada divisão
+multiplicações sucessivas até 500
 
 10
-30 divisões inteiras aleatórias
+tabuada divisão
 
 11
-30 restos de divisão
+30 divisões inteiras aleatórias
 
 12
-potência
+divisões sucessivas de 500 a zero
 
 13
-raiz quadrada
+30 restos de divisão
 
 14s
+potência
+raiz quadrada
 números inteiros
