@@ -32,7 +32,7 @@ bool jogarNivel1(unsigned int &life, unsigned int &bonus, bool &gameOver, string
 				parabensAcertou();
 				qtdAcertos++;
 				bonus++;
-				if(bonus == 11){
+				if(bonus == QTD_BONUS){
 					maisLife(life, bonus);
 				}
 			}

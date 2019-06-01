@@ -1,8 +1,8 @@
-bool acertouN2(int i, int j, int res);
-bool jogarNivel2(unsigned int &life, unsigned int &bonus, bool &gameOver, string user, string &cargo);
+bool acertouN11(int i, int j, int res);
+bool jogarNivel11(unsigned int &life, unsigned int &bonus, bool &gameOver, string user, string &cargo);
 
 
-bool jogarNivel2(unsigned int &life, unsigned int &bonus, bool &gameOver, string user, string &cargo){
+bool jogarNivel11(unsigned int &life, unsigned int &bonus, bool &gameOver, string user, string &cargo){
 	bool passouDeNivel;
 	int i;
 	int op1, op2;
@@ -11,18 +11,20 @@ bool jogarNivel2(unsigned int &life, unsigned int &bonus, bool &gameOver, string
 	unsigned int qtdAcertos;
 	double score = 0;
 
-	boasVindasNivel(2);
-	cout << "Digite o resultado da soma" << endl;
+	boasVindasNivel(11);
+	cout << "Digite o resultado da divisão" << endl;
 
 	srand (time(NULL));
 	fim = ini = clock();
 	qtdAcertos = 0;
 	for(i = 0; i < 30 && !gameOver; i++ ){
-		op1 = rand() % 11;
+		op1 = rand() % 10;
+		op1++;
 		op2 = rand() % 11;
-		cout << op1 << " + " << op2 << " = ";
+		op2 *= op1;
+		cout << op2 << " / " << op1 << " = ";
 		cin >> res;
-		if(acertouN2(op1, op2, res)){
+		if(acertouN11(op1, op2, res)){
 			parabensAcertou();
 			bonus++;
 			qtdAcertos++;
@@ -48,13 +50,13 @@ bool jogarNivel2(unsigned int &life, unsigned int &bonus, bool &gameOver, string
 	}
 	fim = clock();
 	score = pontuacao(ini, fim, qtdAcertos, QTD_MAX_QUESTOES_N2, gameOver);
-	processarRecorde(2, score, user, cargo);
+	processarRecorde(11, score, user, cargo);
 	passouDeNivel = gameOver ? false : true;
 	return passouDeNivel;
 }
 
-bool acertouN2(int i, int j, int res){
+bool acertouN11(int i, int j, int res){
 	bool acert;
-	acert = (i+j == res)? true : false;
+	acert = (j/i == res)? true : false;
 	return acert;
 }

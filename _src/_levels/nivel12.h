@@ -1,8 +1,8 @@
-bool acertouN9(int i, int j, int res);
-bool jogarNivel9(unsigned int &life, unsigned int &bonus, bool &gameOver, string user, string &cargo);
+bool acertouN12(int i, int j, int res);
+bool jogarNivel12(unsigned int &life, unsigned int &bonus, bool &gameOver, string user, string &cargo);
 
 
-bool jogarNivel9(unsigned int &life, unsigned int &bonus, bool &gameOver, string user, string &cargo){
+bool jogarNivel12(unsigned int &life, unsigned int &bonus, bool &gameOver, string user, string &cargo){
 	bool passouDeNivel;
 	int op1, op2;
 	int res;
@@ -10,30 +10,29 @@ bool jogarNivel9(unsigned int &life, unsigned int &bonus, bool &gameOver, string
 	unsigned int qtdAcertos, qtdPerguntas;
 	double score = 0;
 
-	boasVindasNivel(9);
-	cout << "Digite o resultado da multiplicacao" << endl;
+	boasVindasNivel(12);
+	cout << "Digite o algarismo mais significativo" << endl;
 
 	srand (time(NULL));
 	/*obs 1:
-		O nível 9 tem no mínimo 2 operações
+		O nível 12 tem no mínimo 3 operações
 		quando sempre é sorteado o valor 10. 
 		No pior das hipóteses, sempre é sorteado 
 		o valor 1 e então, haverá infinitas operações.
 		No pior caso razoável, sempre é sorteado 
-		o valor 2 e, então, haverá 9 operações.
+		o valor 2 e, então, haverá 10 operações.
 	*/
 	fim = ini = clock();
 	qtdAcertos = qtdPerguntas = 0;
-	op1 = 1;
+	op2 = 500;
 	do{
-		do{
-			op2 = rand() % 11;
-		} while(!op2);
-		cout << op1 << " x " << op2 << " = ";
+		op1 = rand() % 10;
+		op1++;
+		cout << op2 << " / " << op1 << " = ";
 		qtdPerguntas++;
 		cin.ignore();
 		cin >> res;
-		if(acertouN9(op1, op2, res)){
+		if(acertouN12(op1, op2, res)){
 			parabensAcertou();
 			bonus++;
 			qtdAcertos++;
@@ -52,22 +51,26 @@ bool jogarNivel9(unsigned int &life, unsigned int &bonus, bool &gameOver, string
 				cout << "Seu life eh: " << life << endl;
 			}
 		}
-		op1 *= op2;
-		if(op1%10 == 0 && !gameOver){
-			fim = clock();
-			tempoDecorrido(duracaoSeg_d(ini, fim));
-		}
-
-	} while(op1 < 500 && !gameOver); //obs 1
+		op2 /= op1;
+	} while(op2 > 0 && !gameOver); //obs 1
+	
 	fim = clock();
 	score = pontuacao(ini, fim, qtdAcertos, qtdPerguntas, gameOver);
-	processarRecorde(9, score, user, cargo);
+	processarRecorde(12, score, user, cargo);
 	passouDeNivel = gameOver ? false : true;
 	return passouDeNivel;
 }
 
-bool acertouN9(int i, int j, int res){
+bool acertouN12(int i, int j, int res){
+	int temp;
 	bool acert;
-	acert = (i*j == res || (i*j > 500 && res==0) )? true : false;
+	int resC = j/i;	//i nunca é zero porque op1 nunca é zero
+	temp = resC;
+	while(resC>0){
+		temp = resC;
+		resC /= 10;
+	}
+	resC = temp;
+	acert = (resC == res) ? true : false;
 	return acert;
 }
