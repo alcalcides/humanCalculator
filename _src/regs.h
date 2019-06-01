@@ -49,12 +49,12 @@ long int buscarUser(string user){
 		if(!achou){
 			idUser = -1;
 		}
+		fclose(regUsers);
 	}
 	else{
 		idUser = -2;
 	}
 
-	fclose(regUsers);
 	return idUser;
 }
 

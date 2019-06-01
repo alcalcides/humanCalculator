@@ -28,13 +28,14 @@ tabuada de multiplicação (algarismo das unidades)
 multiplicações sucessivas até 500
 
 10
-tabuada divisão
+tabuada de divisão
 
 11
 30 divisões inteiras aleatórias
 
 12
 divisões sucessivas de 500 a zero
+digitar somente o algarismo mais significativo
 
 13
 30 restos de divisão

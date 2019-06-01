@@ -19,7 +19,7 @@ bool jogarNivel1(unsigned int &life, unsigned int &bonus, bool &gameOver, string
 	qtdAcertos = 0;
 	for(i = 0; i < 11 && !gameOver; i++ ){
 		op1 = i;
-		for (k = 0; k < 12; ++k){
+		for (k = 0; k < 11; ++k){
 				opUsado[k] = false;
 			}
 		for (j = 0; j < 11 ; ++j){
