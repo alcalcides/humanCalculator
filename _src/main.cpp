@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string>
-#include <windows.h>
+//#include <windows.h>
 using namespace std;
 
 #include "defs.h"
@@ -152,8 +152,8 @@ int main(void){
 	}
 
 
-	system("pause");
-	system("cls");
+	//system("pause");
+	system("clear");
 
 	return 0;
 }

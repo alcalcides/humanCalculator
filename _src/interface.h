@@ -15,7 +15,7 @@ void reportarRecordeAnterior(char* user, double lastRecord);
 void tempoDecorrido(double tempo);
 
 void apresentacao(void){
-	system("cls");
+	system("clear");
 	
 	cout << endl << endl << endl << endl << endl << endl << endl;
 	cout <<	"****************************************" << endl;
@@ -64,13 +64,13 @@ void parabensAcertou(void){
 
 void mensagemErrouItem(void){
 	cout << "ERRRRRROU :(" << endl;
-	Beep(200, 800);
+	//Beep(200, 800);
 }
 
 void maisLife(unsigned int &life, unsigned int &qtdConsecutivaAcertos){
 	life++;
 	cout << "Mais life!!!" << life << endl;
-	Beep(1000, 400);
+	//Beep(1000, 400);
 	qtdConsecutivaAcertos = 0;
 }
 
@@ -79,21 +79,21 @@ void boasVindasNivel(unsigned int nivel){
 	cout <<	"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
 	cout <<	"^^^^ Nivel " << nivel << flush;
 	for(w = 0; w < 4; w++){
-		Sleep(700);
+		//Sleep(700);
 		cout << "." << flush;
 	}
-	Sleep(1000);
+	//Sleep(1000);
 	cout << " Esteja Preparado!" << flush;
-	Sleep(2000);
+	//Sleep(2000);
 	cout << "  ^^^^" << endl;
 	cout <<	"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" << endl;
-	Sleep(1000);
+	//Sleep(1000);
 }
 
 unsigned int oferecerUpgrade(unsigned int &nivel){
 	char resp;
 	int cmd;
-	Beep(1100, 1000);
+	//Beep(1100, 1000);
 	cout << "Nivel desbloqueado: Nivel " << nivel + 1 << endl;
 	cout << "Quer fazer upgrade gratuito agora? (S/N): ";
 	while(cin >> resp, resp != 'S' && resp != 'N');
@@ -128,22 +128,22 @@ void relatorio(string user, string cargo, int nivel, int life, int bonus){
 
 void perdeu(){
 	int i;
-	Beep(200, 1000);
+	//Beep(200, 1000);
 	cout << "Voce perdeu..." << flush;
-	Sleep(1000);
+	//Sleep(1000);
 	cout << "   :)" << flush; 
-	Sleep(800);
+	//Sleep(800);
 	cout << "\b|" << flush;
-	Sleep(120);
+	//Sleep(120);
 	cout << "\b(" << flush;
-	Sleep(2000);
+	//Sleep(2000);
 	cout << endl;
 }
 
 void parabenizarRecorde(unsigned int nivel, double score, string user){
 	cout << endl << endl << "Nossa ! " << flush;
-	Sleep(300);
-	Beep(1200, 1000);
+	//Sleep(300);
+	//Beep(1200, 1000);
 	cout << "Voce Bateu Recorde! ;)" << endl;
 	cout << "Novo Recorde Nivel " << nivel << " pertence a " << user << " com " << score << " pontos" << endl;
 }
